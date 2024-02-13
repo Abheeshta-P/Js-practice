@@ -10,3 +10,9 @@ This is a repository that contains my javascript practice files and it contains 
 - When user hovers on image the image and its alt text will be displayed in main div and on mouse out it regains the previous state
 - Tech stack : HTML,CSS,JS
 
+## 2. Refresh magic
+### Features
+- Change the photo in box every time you refresh
+- It consists of array of images from which images are drawn at random
+- Tech stack : HTML,CSS,JS
+
