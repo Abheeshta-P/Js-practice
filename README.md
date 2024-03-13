@@ -15,4 +15,8 @@ This is a repository that contains my javascript practice files and it contains 
 - Change the photo in box every time you refresh
 - It consists of array of images from which images are drawn at random
 - Tech stack : HTML,CSS,JS
-
+#### Version 2 of refresh magic
+##### Extra features
+- Three boxes which renders different images on each refresh
+- Used a for each loop and some new dom API's like query selectors
+- Added some good hover effects and accessibility through tabindex
