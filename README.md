@@ -20,3 +20,10 @@ This is a repository that contains my javascript practice files and it contains 
 - Three boxes which renders different images on each refresh
 - Used a for each loop and some new web API's like querySelector to access elements in the DOM
 - Added some hover effects and accessibility through tabindex
+
+## 3. Coin flip guessing game
+### Features
+- On spot evaluation with computer as opponent
+- Stores total number of wins and losses using localStorage
+- Easy to play and uses alert to display the result
+- Tech stack : HTML,CSS,JS
