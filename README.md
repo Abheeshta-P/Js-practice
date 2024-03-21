@@ -26,4 +26,5 @@ This is a repository that contains my javascript practice files and it contains 
 - On spot evaluation with computer as opponent
 - Stores total number of wins and losses using localStorage
 - Easy to play and uses alert to display the result
+- Play here [flipcoinguessgame-abheeshta](https://flipcoinguessgame.netlify.app/)
 - Tech stack : HTML,CSS,JS
