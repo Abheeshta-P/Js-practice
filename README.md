@@ -33,6 +33,6 @@ This is a repository that contains my javascript practice files and it contains 
 ### Features
 - On spot evaluation with computer as opponent
 - Stores total number of wins and losses using localStorage
-- Play here [rock-paper-scissorsgame-abheeshta]([https://flipcoinguessgame.netlify.app/](https://rockpaperscissorsgamebyabheeshta.netlify.app/))
+- Play here [rock-paper-scissorsgame-abheeshta](https://rockpaperscissorsgamebyabheeshta.netlify.app/)
 - Tech stack : HTML,CSS,JS
 
