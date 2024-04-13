@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock paper scissors</title>
+  <style>
+   html{
+      background-color: black;
+      color: white;
+      width: 100%;
+      height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .images-play {
+      width: 90px;
+    }
+    .center-play {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .choices {
+      margin-top: 20px;
+    }
+    .cmp-img {
+      width: 130px;
+    }
+    .player-img {
+      width: 100px;
+    }
+    .btn-play-css {
+      color: black;
+      font-weight: 600;
+      background-color: #fcaf00;
+      border: none;
+      padding: 12px 27px;
+      border-radius: 20px;
+      font-size: 16px;
+    }
+    .btn-play-css:hover {
+      cursor: pointer;
+      box-shadow: 0 0 10px #fcb00065;
+    }
+    .btn-play-css:active {
+      opacity: 0.9;
+    }
+    .heading {
+      font-size:40px;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="heading">Rock Paper Scissors</h1>
+  <div class="center-play">
+    <div class="js-resultDisplay-computer"><img src="images/computer.png" alt="computer" class="cmp-img"></div>
+    <div class="js-resultDisplay"><h2>VS</h2></div>
+    <div class="js-resultDisplay-player"><img src="images/you.png" alt="player"  class="player-img"></div>
+    <div class="choices">
+      <button onclick="game('Rock'); " class="btn-play-css">Rock</button>
+    <button onclick="game('Paper');" class="btn-play-css">Paper</button>
+    <button onclick="game('Scissors');" class="btn-play-css">Scissors</button>
+    </div>
+    
+    <p class="js-pointCounter">Wins: 0, Losses: 0, Ties: 0 </p>
+    <button onclick="console.log('reset'); gameReset();" class="btn-play-css">Reset</button>
+  </div>
+  
+  
+  <script>
+    let computer='';
+    let statusPlay ='';
+    //dom 
+    
+    function updateImages(target,imgsrc,classname){
+      let display=document.querySelector(`.js-resultDisplay-${target}`)
+      display.innerHTML=`<img src="images/${imgsrc}.png" alt="${imgsrc}" class="${classname}">`
+    }
+
+    function gameReset(){
+       localStorage.removeItem("gameObject");
+       //dom
+       document.querySelector('.js-resultDisplay').innerHTML=`<h2>VS</h2>`;
+       document.querySelector('.js-pointCounter'). innerText=`Wins: 0, Losses: 0, Ties: 0 `;
+       updateImages('computer','computer','cmp-img');
+       updateImages('player','you','player-img');
+
+      
+    }
+
+   
+    function game(choice){
+      let gameobject=JSON.parse(localStorage.getItem("gameObject"))|| 
+      {   wins:0,
+          looses:0,
+          ties:0
+      };      
+      console.log(gameobject);
+
+      const randomNumber=Math.random();
+      console.log(randomNumber);
+
+      if(randomNumber>=0 && randomNumber<1/3)
+      computer='Rock';
+      else if(randomNumber>=1/3 && randomNumber<2/3)
+      computer='Paper';
+      else if(randomNumber>=2/3 && randomNumber<1)
+      computer='Scissors'
+
+
+    if((choice=='Rock'&&computer=='Scissors')||
+       (choice=='Paper'&&computer=='Rock')||
+       (choice=='Scissors'&&computer=='Paper')){
+           statusPlay='Win';
+           gameobject.wins++;
+    }
+    else if((choice=='Rock'&&computer=='Paper')||
+            (choice=='Paper'&&computer=='Scissors')||
+            (choice=='Scissors'&&computer=='Rock')){
+             statusPlay='Loose';
+             gameobject.looses++;
+    }
+    else if(choice===computer){
+    statusPlay='Tie';
+    gameobject.ties++;
+    }
+
+    localStorage.setItem("gameObject",JSON.stringify(gameobject));
+
+    //dom
+    const resultDisplay=document.querySelector('.js-resultDisplay');
+    const pointDisplay=document.querySelector('.js-pointCounter');
+    resultDisplay.innerHTML=`<h2>${statusPlay}</h2>`;
+   
+    updateImages('computer',`${computer.toLowerCase()}-emoji`,'images-play');
+    updateImages('player',`${choice.toLowerCase()}-emoji`,'images-play');
+    
+    pointDisplay.innerText=`Wins: ${gameobject.wins}, Losses: ${gameobject.looses}, Ties: ${gameobject.ties} `;
+  }
+  </script>
+</body>
+</html> 
+
+<!-- 
+  *****updateImg function eliminates all this condition******
+
+  if(computer=='Rock'){
+  computerDisplay.innerHTML=`<img src="images/rock-emoji.png" alt="rock" class="images-play ">`;
+}
+else if(computer=='Paper'){
+  computerDisplay.innerHTML=`<img src="images/paper-emoji.png" alt="paper" class="images-play ">`;
+}
+else if(computer=='Scissors'){
+  computerDisplay.innerHTML=`<img src="images/scissors-emoji.png" alt="scissors" class="images-play ">`;
+}
+//player
+if(choice=='Rock'){
+  playerDisplay.innerHTML=`<img src="images/rock-emoji.png" alt="rock" class="images-play">`;
+}
+else if(choice=='Paper'){
+  playerDisplay.innerHTML=`<img src="images/paper-emoji.png" alt="paper" class="images-play">`;
+}
+else if(choice=='Scissors'){
+  playerDisplay.innerHTML=`<img src="images/scissors-emoji.png" alt="scissors" class="images-play">`;
+} -->
