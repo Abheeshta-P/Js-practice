@@ -28,3 +28,11 @@ This is a repository that contains my javascript practice files and it contains 
 - Easy to play and uses alert to display the result
 - Play here [flipcoinguessgame-abheeshta](https://flipcoinguessgame.netlify.app/)
 - Tech stack : HTML,CSS,JS
+
+## 4. Rock paper scissors game
+### Features
+- On spot evaluation with computer as opponent
+- Stores total number of wins and losses using localStorage
+- Play here [rock-paper-scissorsgame-abheeshta](https://rockpaperscissorsgamebyabheeshta.netlify.app/)
+- Tech stack : HTML,CSS,JS
+
