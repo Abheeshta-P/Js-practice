@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+   h1{
+    font-size: 50px;
+
+   }
+    body{
+      background-color: black;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    #displayCalculation{
+      height: 37px;
+      width: 260px;
+      overflow: hidden;
+   text-wrap: nowrap;
+      text-align: right;
+      font-weight: 600;
+      font-size: 40px;
+    }
+    .calculatorbox{
+
+width: 270px;
+display: grid;
+grid-template-columns: repeat(4,60px);
+justify-items: center;
+align-items: center;
+padding: 20px 0px;
+gap: 10px;
+    }
+    .operand-calci,.operator-calci{
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-weight: 600;
+      font-size: 17px;
+      color: white;
+      border: none;
+      transition: opacity 0.2s;
+      cursor: pointer;
+    }
+    .operand-calci:active,.operator-calci:active{
+      opacity: 0.8;
+    }
+    .operand-calci{
+      background-color: #343333;
+    }
+    .operator-calci{
+      background-color: #cd8006;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculator</h1>
+  <p id="displayCalculation"></p>
+  <div class="calculatorbox">
+    
+    <button onclick="display(this);"class="operand-calci">1</button>
+    <button onclick="display(this);"class="operand-calci">2</button>
+    <button onclick="display(this);"class="operand-calci">3</button>
+    <button onclick="display(this);"class="operator-calci">+</button>
+  
+    <button onclick="display(this);"class="operand-calci">4</button>
+    <button onclick="display(this);"class="operand-calci">5</button>
+    <button onclick="display(this);"class="operand-calci">6</button>
+    <button onclick="display(this);"class="operator-calci">-</button>
+  
+    <button onclick="display(this);"class="operand-calci">7</button>
+    <button onclick="display(this);"class="operand-calci">8</button>
+    <button onclick="display(this);"class="operand-calci">9</button>
+    <button onclick="display(this);"class="operator-calci">*</button>
+    
+    <button onclick="display(this);"class="operand-calci">0</button>
+    <button onclick="display(this);"class="operand-calci">.</button>
+    <button onclick="evaluationCalculator();"class="operand-calci">=</button>
+    <button onclick="display(this);"class="operator-calci">/</button>
+    
+    <button onclick="clearCalculation();"class="operand-calci">AC</button>
+    <button onclick="backspace();"class="operand-calci">C</button>
+  </div>
+  
+  <script>
+    let calculation=localStorage.getItem('calculation')||'';
+    
+    document.getElementById('displayCalculation').innerHTML=calculation;
+   
+    function calciSetter(){
+    localStorage.setItem('calcualtion',calculation);
+      document.getElementById('displayCalculation').innerHTML=calculation;
+      console.log(calculation);
+   }
+    function display(element){
+      calculation+=element.innerHTML;
+      calciSetter();
+      adjustFontSize();
+    }
+    function evaluationCalculator(){
+      calculation=eval(calculation);
+      if(!Number.isInteger(calculation)){
+        calculation=parseFloat(calculation.toFixed(4));
+      }
+      calciSetter();
+    }
+    function clearCalculation(){
+      console.log('Cleared.');
+      calculation='';
+      calciSetter();
+      adjustFontSize();
+    }
+
+    function adjustFontSize(){
+      let display=document.getElementById('displayCalculation');
+      //to take the width
+      let displayWidth=display.offsetWidth;
+      let scrollWidth=display.scrollWidth;
+      //if inherited or not mentioned explit font size use window.getComputedStyle(display).fontSize
+      let fontsize=parseInt(display.style.fontSize);
+      if(scrollWidth>displayWidth){
+        fontsize-=2;
+        display.style.fontSize = fontsize + 'px';
+      }
+else{
+  display.style.fontSize='40px';
+}
+    }
+    function backspace() {
+  calculation = calculation.slice(0, -1); // Remove the last character
+  calciSetter();
+}
+
+  </script>
+</body>
+</html>
