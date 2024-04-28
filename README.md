@@ -36,3 +36,10 @@ This is a repository that contains my javascript practice files and it contains 
 - Play here [rock-paper-scissorsgame-abheeshta](https://rockpaperscissorsgamebyabheeshta.netlify.app/)
 - Tech stack : HTML,CSS,JS
 
+## 5. Calculator
+### Features
+- Calculation with help of buttons
+- uses local storage
+- includes a backspace feature using splice method
+- Live here : [calculator-abheeshta](https://calculatorbyabheeshta.netlify.app/)
+- Tech stack : HTML,CSS,JS
