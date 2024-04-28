@@ -43,3 +43,12 @@ This is a repository that contains my javascript practice files and it contains 
 - includes a backspace feature using splice method
 - Live here : [calculator-abheeshta](https://calculatorbyabheeshta.netlify.app/)
 - Tech stack : HTML,CSS,JS
+
+## 6. To do list
+### Features
+- Add a task and when completed use checkbox to strike it off or reset all the tasks
+- uses local storage
+- used array,loop,objects,JSON and some DOM API's like add/remove classList,appendChild,removeChild,insertAdjacentElement
+- Live here : [todolist-abheeshta](https://todowebsiteabheeshta.netlify.app/)
+- Tech stack : HTML,CSS,JS
+
