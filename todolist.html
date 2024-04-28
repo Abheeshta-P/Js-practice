@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/todolist.css">
+  <title>Todo list</title>
+</head>
+<body onload="displayTasks();  checkResetButton();">
+  <section>
+    <h1><span>Check it off</span> make it happen</h1>
+    <div class="todolist">
+      <div class="input-task-box">
+        <input type="text" name="" id="input-task" placeholder="Add a task" onkeypress=enterAdd(event);>
+        <button id="add-input" class="buttons" onclick="addTask();checkResetButton();">Add</button>
+        <div class="date">
+          <input type="date" id="deadline">
+          <p id="tooltip">Deadline</p> 
+        </div>        
+      </div>
+      <div class="output-box"></div>
+    </div>
+  </section>
+
+  <script src="/smallprojects/scripts/todolist.js"></script>
+</body>
+</html>
