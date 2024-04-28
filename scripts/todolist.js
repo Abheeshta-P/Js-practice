@@ -67,6 +67,7 @@ function displayTasks(){
     `;
   }
   outputBox.innerHTML=HTMLDisplay;
+  checkResetButton();
 }
 
 
