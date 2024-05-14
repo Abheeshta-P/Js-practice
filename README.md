@@ -52,3 +52,11 @@ This is a repository that contains my javascript practice files and it contains 
 - Live here : [todolist-abheeshta](https://todowebsiteabheeshta.netlify.app/)
 - Tech stack : HTML,CSS,JS
 
+## 7. Stop watch
+### Features
+- Start pause and reset the timer easily
+- lap the important times
+- used array,loop
+- Live here : [stopwatch-abheeshta](https://stopwatchbyabheeshta.netlify.app/)
+- Tech stack : HTML,CSS,JS
+
