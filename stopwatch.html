@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Watch</title>
+  <style>
+    html{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .box{
+      width: 500px;
+      height: 250px;
+      background-color: rgba(128, 128, 128, 0.856);
+      border-radius: 20px;
+      border: 3px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .option-btn{
+      background-color: black;
+      color: white;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .option-btn:hover{
+      box-shadow: 0 0 10px 1px  rgb(255, 255, 255);
+    }
+    .option-btn:active{
+      opacity: 0.8;
+    }
+    .buttons{
+      display: flex;
+      gap: 15px;
+    }
+    h1{
+      font-size: 40px;
+    }
+    .time{
+      font-size: 70px;
+      font-weight: 600;
+    }
+    .laps-box{
+      display: flex;
+      width: 500px;
+      height: max-content;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+    }
+    .lap{
+      display: flex;
+      justify-content: space-evenly;
+      font-size: 20px;
+      font-weight: 600;
+      width: 100%;
+      align-items: center
+    }
+    .deletelap{
+      padding: 9px 13px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Stop Watch</h1>
+  <div class="box">
+    <div class="time">00:00:00</div>
+    <div class="buttons">
+      <button class="option-btn" id="start-pause">Start</button>
+      <button class="option-btn" id="reset">Reset</button>
+      <button class="option-btn" id="laps" onclick="addLaps()">Laps</button>
+    </div>
+  </div>
+  <div class="laps-box"></div>
+  <script>
+    let hour=0;
+    let min=0;
+    let sec=0;
+    let id;
+    let isStarted=false;
+
+    let time=document.querySelector('.time');
+    let startPauseWatch=document.querySelector('#start-pause');
+    let resetWatch=document.querySelector('#reset');
+    let lapsWatch=document.querySelector('#laps');
+
+    let lapsBox=document.querySelector('.laps-box');
+
+    startPauseWatch.addEventListener('click',()=>{
+      if(isStarted){
+        pauseTimer();
+      }
+      else{
+        startTimer();
+      }
+    });
+    resetWatch.addEventListener('click',()=>{
+      resetTimer();
+    })
+    function startTimer(){
+      startPauseWatch.textContent="Pause";
+      isStarted=true;
+      id=setInterval(updateTimer,1000);
+    }
+    function pauseTimer(){
+      startPauseWatch.textContent="Start";
+      isStarted=false;
+      clearInterval(id);
+    }
+    function resetTimer(){
+      pauseTimer();
+      sec=0;
+      min=0;
+      hour=0;
+      displayTimer(hour,min,sec);
+    }
+    function updateTimer(){
+      sec++;
+      if(sec>=60){
+        sec=0;
+        min++;
+        if(min>=60){
+          min=0;
+          hour++;
+          if(hour>=60){
+            hour=0;
+          }
+        }
+      }
+
+      displayTimer(hour,min,sec);
+
+    }
+    function displayTimer(hour,min,sec){
+      let h='',m='',s='';
+      if(hour<10)
+      h='0';
+    if(min<10)
+    m='0';
+    if(sec<10)
+    s='0';
+  //String(hour).padStart(2, '0')
+      time.textContent=`${h}${hour}:${m}${min}:${s}${sec}`;
+    }
+
+
+    let lapsArr=[];
+    function addLaps(){
+      if(hour!=0||min!=0||sec!=0)
+      lapsArr.push({hour,min,sec});
+    displayLaps()   ;
+   }
+    function displayLaps(){
+      lapsBox.innerHTML=''
+      lapsArr.forEach((item,index)=>{
+      lapsBox.innerHTML+=`<div class="lap"><p class="laptime">
+        ${String(item.hour).padStart(2, '0')}:${String(item.min).padStart(2, '0')}:${String(item.sec).padStart(2, '0')}</p>
+        <button class="deletelap option-btn" onclick="deleteLaps(${index})">Delete</button>
+        </div>
+        `;
+      })
+    }
+    function deleteLaps(index){
+      lapsArr.splice(index,1);
+     displayLaps();
+    }
+  </script>
+</body>
+</html>
