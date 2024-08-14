@@ -33,7 +33,7 @@ This is a repository that contains my javascript practice files and it contains 
 ### Features
 - On spot evaluation with computer as opponent
 - Stores total number of wins and losses using localStorage
-- Play here [rock-paper-scissorsgame-abheeshta](https://rockpaperscissorsgamebyabheeshta.netlify.app/)
+- Play here [rock-paper-scissorsgame-abheeshta](https://nostalgicrockpaperscissorsgame.netlify.app/)
 - Tech stack : HTML,CSS,JS
 
 ## 5. Calculator
@@ -49,7 +49,7 @@ This is a repository that contains my javascript practice files and it contains 
 - Add a task and when completed use checkbox to strike it off or reset all the tasks
 - uses local storage
 - used array,loop,objects,JSON and some DOM API's like add/remove classList,appendChild,removeChild,insertAdjacentElement
-- Live here : [todolist-abheeshta](https://todowebsiteabheeshta.netlify.app/)
+- Live here : [todolmakeithappen](https://todomakeithappen.netlify.app/)
 - Tech stack : HTML,CSS,JS
 
 ## 7. Stop watch
